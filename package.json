@@ -2,6 +2,7 @@
   "name": "fivedayforecaster",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://laxmy.github.io/WeatherForecaster"
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.0.0-alpha.6",
@@ -18,9 +19,14 @@
     "redux-promise": "^0.6.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "gh-pages": "^1.1.0"
   }
 }
