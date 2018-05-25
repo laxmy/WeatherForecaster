@@ -1,6 +1,8 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Navbar , NavbarBrand, Button, Form, FormGroup, Input } from 'reactstrap';
+
 import fetchWeather from '../actions/index';
 
 class SearchBar extends Component
@@ -21,19 +23,29 @@ class SearchBar extends Component
   }
   render(){
     return (
-      <div className = 'search-bar'>
-        <form className="input-group" onSubmit = {this.onFormSubmit}>
-          <input placeholder="Search for a city to know its forecast"
-          onChange ={ this.onInputChange } value = { this.state.term }/>
-          <button type ='submit' className="btn btn-primary">submit</button>
-        </form>
-      </div>
+    <Navbar color="light" expand="md">
+      <NavbarBrand href='/'>Five day Forecaster</NavbarBrand>
+      <Form inline>
+        <FormGroup>
+          <Input placeholder="Search for a city to know its forecast"
+          onChange ={ this.onInputChange } value = { this.state.term }  />
+        <Button onClick ={ this.onFormSubmit }>Search</Button>
+        </FormGroup>
+      </Form>
+    </Navbar>
     );
   }
 }
 
-function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch)
+{
   return bindActionCreators({ fetchWeather }, dispatch);
 }
 
-export default connect (null, mapDispatchToProps)(SearchBar);
+function mapStateToProps({weather})
+{
+  return { weather };
+}
+
+
+export default connect (mapStateToProps, mapDispatchToProps)(SearchBar);

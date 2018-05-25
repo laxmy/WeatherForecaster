@@ -1,5 +1,11 @@
-.App {
+.App{
   text-align: center;
+}
+.table-cell{
+  text-align: center;
+}
+.small-table{
+  background: transparent;
 }
 
 .App-logo {
@@ -25,4 +31,10 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.Weather-card{
+  width : 90%;
+  margin: 10 auto;
+  color: white;
 }
