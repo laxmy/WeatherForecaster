@@ -3,32 +3,14 @@ import WeatherIcons from 'react-weathericons'
 import { Container , Row , Col, Table } from 'reactstrap'
 import background from '../images/day.jpeg'
 import { convertKelvinToCelsius, getNextFiveDaysFrom } from '../utils/helper'
+import DayForecast from './DayForecastTable'
 
 
 class WeatherCard extends Component{
+
   getFiveDaysTemps(){
      let weatherForecastArray = Object.keys(this.props.weather.list).map(key => this.props.weather.list[key]);
      return weatherForecastArray.filter((value,index) => index % 8=== 0);
-  }
-  renderEachDayForecast(dayForecast){
-    return (
-      <Table className="small-table">
-        <thead>
-          <tr colSpan="2">
-            <th><WeatherIcons className={`wi-owm-${dayForecast.weather[0].id}`}/></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr colSpan="2">
-            <td>{ dayForecast.weather[0].description }</td>
-          </tr>
-          <tr>
-            <td>{ dayForecast.main.temp_min}</td>
-            <td>{ dayForecast.main.temp_max}</td>
-          </tr>
-        </tbody>
-      </Table>
-    );
   }
 
   render(){
@@ -39,7 +21,7 @@ class WeatherCard extends Component{
     const currentTime = Date.now();
     const nextFiveDays = getNextFiveDaysFrom(new Date(currentTime));
     const nextFiveDaysTemps = this.getFiveDaysTemps();
-    console.log(nextFiveDaysTemps);
+
     return(
       <div className="Weather-card" style ={ backgroundStyle }>
       <Container>
@@ -50,7 +32,7 @@ class WeatherCard extends Component{
       </Row>
       <Row>
         <Col className ="justify-content-center">
-          <h3> <WeatherIcons className={icon} size="3x" /> </h3>
+          <h3> <WeatherIcons name="main-Icon"className={`${icon}`} size="3x" /> </h3>
         </Col>
       </Row>
       <Row>
@@ -60,23 +42,27 @@ class WeatherCard extends Component{
       </Row>
       <Row>
         <Col  className ="justify-content-center">
-          <h3> {convertKelvinToCelsius(weatherForCity.list[0].main.temp)} </h3>
+          <h3> {convertKelvinToCelsius(weatherForCity.list[0].main.temp)}<WeatherIcons name="unit-Icon" className={`wi-celsius`}/> </h3>
         </Col>
       </Row>
       <Row>
         <Col>
-            <h5> { convertKelvinToCelsius(weatherForCity.list[0].main.temp_min)} </h5>
+            <h5>Min: { convertKelvinToCelsius(weatherForCity.list[0].main.temp_min)}
+               <WeatherIcons name="unit-Icon" className={`wi-celsius`}/>
+            </h5>
         </Col>
         <Col>
-            <h5> {convertKelvinToCelsius(weatherForCity.list[0].main.temp_max)} </h5>
+            <h5>Max: {convertKelvinToCelsius(weatherForCity.list[0].main.temp_max)}
+               <WeatherIcons name="unit-Icon" className={`wi-celsius`} />
+            </h5>
         </Col>
       </Row>
       <Row>
-        <Table>
+        <Table id="fiveDayForecast-table">
           <thead>
             <tr>
               {nextFiveDays.map(day => (
-                <th className="table-cell" key={day}>
+                <th className="table-Headercell" key={day}>
                   { day }
                 </th>
               ))}
@@ -85,7 +71,7 @@ class WeatherCard extends Component{
           <tbody>
             <tr>
             { nextFiveDaysTemps && nextFiveDaysTemps.map(eachDay => (
-              <td>{this.renderEachDayForecast(eachDay)}</td>
+              <td key={eachDay.dt}><DayForecast dayForecast ={eachDay}/></td>
             ))}
             </tr>
           </tbody>

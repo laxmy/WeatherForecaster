@@ -5,8 +5,7 @@ import {
   Carousel,
   CarouselItem,
   CarouselControl,
-  CarouselIndicators,
-  CarouselCaption
+  CarouselIndicators
 } from 'reactstrap';
 
 class WeatherCarousel extends Component {
@@ -48,8 +47,8 @@ class WeatherCarousel extends Component {
   render() {
     const { activeIndex } = this.state;
 
-    const slides = this.props.weather.map((weatherForCity) => {
-      return (
+    const slides = this.props.weather && this.props.weather.map((weatherForCity) => {
+      return (weatherForCity &&
         <CarouselItem
           onExiting={this.onExiting}
           onExited={this.onExited}
@@ -61,7 +60,7 @@ class WeatherCarousel extends Component {
       );
     });
 
-    return (
+    return (this.props.weather.length > 0 &&
       <Carousel
         activeIndex={activeIndex}
         next={this.next}

@@ -1,5 +1,5 @@
 const KelvinToCelsuisConstant = 273.15;
-const DaysOfWeek=["Sun","Mon","Tues","Thurs","Fri"];
+const DaysOfWeek=["Sun","Mon","Tues","Wed","Thurs","Fri","Sat"];
 
 export function convertKelvinToCelsius(value)
 {
