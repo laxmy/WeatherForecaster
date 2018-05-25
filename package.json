@@ -2,7 +2,7 @@
   "name": "fivedayforecaster",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://laxmy.github.io/WeatherForecaster"
+  "homepage": "http://laxmy.github.io/WeatherForecaster",
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.0.0-alpha.6",
