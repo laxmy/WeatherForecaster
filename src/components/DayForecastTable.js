@@ -6,7 +6,7 @@ import { convertKelvinToCelsius } from '../utils/helper'
 function DayForecast(props){
   const dayForecast = props.dayForecast;
   return (
-    <Table id="dayForecast-table">
+    <Table id="dayForecast-Table">
       <thead>
         <tr colSpan="2">
           <th colSpan="2" className="table-Headercell"><WeatherIcons className={`wi-owm-${dayForecast.weather[0].id}`} name="weather-Icon"/></th>

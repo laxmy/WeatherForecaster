@@ -1,7 +1,7 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Navbar , NavbarBrand, Button, Form, FormGroup, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Input, NavbarBrand, Nav, NavItem } from 'reactstrap';
 
 import fetchWeather from '../actions/index';
 
@@ -19,21 +19,25 @@ class SearchBar extends Component
   onFormSubmit = (event) =>
   {
     event.preventDefault();
-
     this.props.fetchWeather(this.state.term);
+    this.setState({ term: "" });
   }
   render(){
     return (
-    <Navbar color="light" expand="md">
-      <NavbarBrand href='/'>Five day Forecaster</NavbarBrand>
-      <Form inline>
-        <FormGroup>
-          <Input placeholder="Search for a city to know its forecast"
-          onChange ={ this.onInputChange } value = { this.state.term }  />
-        <Button onClick ={ this.onFormSubmit }>Search</Button>
-        </FormGroup>
-      </Form>
-    </Navbar>
+      <div className="top-Bar">
+              <NavbarBrand>Five Day Forecaster</NavbarBrand>
+              <Nav>
+              <NavItem  className="ml-auto">
+              <Form inline onSubmit={this.onFormSubmit}>
+                <FormGroup>
+                  <Input placeholder="Search for a city in US"
+                  onChange ={ this.onInputChange } value = { this.state.term }  />
+                <Button type="submit">Search</Button>
+                </FormGroup>
+              </Form>
+            </NavItem>
+          </Nav>
+    </div>
     );
   }
 }

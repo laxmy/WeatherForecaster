@@ -1,36 +1,30 @@
 .App{
   text-align: center;
 }
-
+.top-Bar{
+  background: rgba(14, 77, 146, 0.5);
+  color: White;
+}
 .table th, .table td {
   border-top: none !important;
   border-left: none !important;
 }
+
 .table-Headercell{
   text-align: center;
   margin-top: 0.25%;
 }
-#fiveDayForecast-table{
+
+#fiveDayForecast-Table{
   width: 80%;
   margin: 0 auto;
 }
-#dayForecast-table{
+
+#dayForecast-Table{
   background-color: rgba(0,0,0,0.2);
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.Weather-card{
+.weather-Card{
   width : 90%;
   margin: 10 auto;
   color: white;

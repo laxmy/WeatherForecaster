@@ -8,7 +8,7 @@ export function convertKelvinToCelsius(value)
 
 export function convertKelvinToFahrenheit(value)
 {
-
+// TODO: implement support for diff units
 }
 export function getNextFiveDaysFrom(date){
   let nextFiveDays =[];

@@ -23,7 +23,7 @@ class WeatherCard extends Component{
     const nextFiveDaysTemps = this.getFiveDaysTemps();
 
     return(
-      <div className="Weather-card" style ={ backgroundStyle }>
+      <div className="weather-Card" style ={ backgroundStyle }>
       <Container>
       <Row>
         <Col className ="justify-content-center">
@@ -58,7 +58,7 @@ class WeatherCard extends Component{
         </Col>
       </Row>
       <Row>
-        <Table id="fiveDayForecast-table">
+        <Table id="fiveDayForecast-Table">
           <thead>
             <tr>
               {nextFiveDays.map(day => (
